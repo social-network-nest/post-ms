@@ -8,11 +8,6 @@ export class PostController {
 
   @MessagePattern({ cmd: 'create_post' })
   create() {
-    return 'hola mi amorcito';
-  }
-
-  @MessagePattern({ cmd: 'find_all_posts' })
-  findAll() {
-    return 'como estas mi amorcito';
+    return 'create_post';
   }
 }
