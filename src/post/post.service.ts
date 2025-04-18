@@ -1,4 +1,9 @@
 import { Injectable } from '@nestjs/common';
 
 @Injectable()
-export class PostService {}
+export class PostService {
+
+    createPost(payload) {
+        return payload;
+    }
+}
