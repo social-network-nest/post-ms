@@ -12,6 +12,6 @@ export class PostController {
 
   @MessagePattern({ cmd: 'create_post' })
   createPost(@Payload() payload: any) {
-    return this.userService.listUsers();
+    return 'hahjah'
   }
 }
