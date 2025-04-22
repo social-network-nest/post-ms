@@ -9,10 +9,14 @@ export class PostService extends PrismaClient implements OnModuleInit {
     }
 
     async create(payload) {
-        const { description } = payload;
+        const {
+            userId,
+            description
+        } = payload;
         return this.post.create({
             data: {
                 description: description,
+                userId: userId,
             }
         });
     }
