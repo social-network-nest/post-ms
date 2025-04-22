@@ -10,8 +10,13 @@ export class PostController {
     private readonly userService: UserService
   ) {}
 
-  @MessagePattern({ cmd: 'create_post' })
-  createPost(@Payload() payload: any) {
-    return 'hahjah'
+  @MessagePattern({ cmd: 'create' })
+  create(@Payload() payload: any) {
+    return this.postService.create(payload);
+  }
+
+  @MessagePattern({ cmd: 'list' })
+  list() {
+    return this.postService.list();
   }
 }

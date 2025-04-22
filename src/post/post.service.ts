@@ -1,9 +1,23 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, OnModuleInit } from '@nestjs/common';
+import { PrismaClient } from '@prisma/client';
 
 @Injectable()
-export class PostService {
+export class PostService extends PrismaClient implements OnModuleInit {
 
-    createPost(payload) {
-        return payload;
+    async onModuleInit() {
+        await this.$connect();
+    }
+
+    async create(payload) {
+        const { description } = payload;
+        return this.post.create({
+            data: {
+                description: description,
+            }
+        });
+    }
+
+    async list() {
+        return this.post.findMany();
     }
 }
