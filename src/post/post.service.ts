@@ -9,7 +9,13 @@ export class PostService extends PrismaClient implements OnModuleInit {
     }
 
     list() {
-        return this.post.findMany();
+        return this.post.findMany({
+            select: {
+                id: true,
+                description: true,
+                published: true,
+            },
+        });
     }
 
     async create(payload) {
