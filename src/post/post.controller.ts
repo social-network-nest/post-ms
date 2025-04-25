@@ -8,13 +8,29 @@ export class PostController {
     private readonly postService: PostService,
   ) {}
 
-  @MessagePattern({ cmd: 'create' })
-  create(@Payload() payload: any) {
-    return this.postService.create(payload);
-  }
-
   @MessagePattern({ cmd: 'list' })
   list() {
     return this.postService.list();
+  }
+
+  @MessagePattern({ cmd: 'create' })
+  create(
+    @Payload() payload: any,
+  ) {
+    return this.postService.create(payload);
+  }
+
+  @MessagePattern({ cmd: 'update' })
+  update(
+    @Payload() payload: any,
+  ) {
+    return this.postService.update(payload);
+  }
+
+  @MessagePattern({ cmd: 'delete' })
+  delete(
+    @Payload() payload: any,
+  ) {
+    return this.postService.delete(payload);
   }
 }

@@ -8,20 +8,46 @@ export class PostService extends PrismaClient implements OnModuleInit {
         await this.$connect();
     }
 
+    list() {
+        return this.post.findMany();
+    }
+
     async create(payload) {
-        const {
-            userId,
-            description
-        } = payload;
-        return this.post.create({
+        const {userId, description} = payload;
+        const post = await this.post.create({
             data: {
                 description: description,
                 userId: userId,
             }
         });
+        return {
+            id: post.id,
+            message: 'Post created successfully',
+        }
     }
 
-    async list() {
-        return this.post.findMany();
+    async update(payload) {
+        const {postId: id, description} = payload;
+        await this.post.update({
+            where: { id },
+            data: {
+                description: description,
+            }
+        });
+        return {
+            id: id,
+            message: 'Post updated successfully',
+        }
+    }
+
+    async delete(payload) {
+        const {postId: id} = payload;
+        await this.post.delete({
+            where: { id },
+        });
+        return {
+            id: id,
+            message: 'Post deleted successfully',
+        }
     }
 }
