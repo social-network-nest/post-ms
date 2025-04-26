@@ -18,6 +18,18 @@ export class PostService extends PrismaClient implements OnModuleInit {
         });
     }
 
+    find(payload) {
+        const {postId: id} = payload;
+        return this.post.findUnique({
+            where: { id },
+            select: {
+                id: true,
+                description: true,
+                published: true,
+            },
+        });
+    }
+
     async create(payload) {
         const {userId, description} = payload;
         const post = await this.post.create({
