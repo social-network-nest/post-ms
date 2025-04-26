@@ -15,9 +15,9 @@ export class PostController {
 
   @MessagePattern({ cmd: 'find' })
   find(
-    @Payload() payload: any,
+    @Payload() id: any,
   ) {
-    return this.postService.find(payload);
+    return this.postService.find(id);
   }
 
   @MessagePattern({ cmd: 'create' })

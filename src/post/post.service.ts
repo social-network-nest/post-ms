@@ -18,8 +18,7 @@ export class PostService extends PrismaClient implements OnModuleInit {
         });
     }
 
-    find(payload) {
-        const {postId: id} = payload;
+    find(id) {
         return this.post.findUnique({
             where: { id },
             select: {
