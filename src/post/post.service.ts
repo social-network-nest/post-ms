@@ -57,8 +57,7 @@ export class PostService extends PrismaClient implements OnModuleInit {
         }
     }
 
-    async delete(payload) {
-        const {postId: id} = payload;
+    async delete(id) {
         await this.post.delete({
             where: { id },
         });

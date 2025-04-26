@@ -36,8 +36,8 @@ export class PostController {
 
   @MessagePattern({ cmd: 'delete' })
   delete(
-    @Payload() payload: any,
+    @Payload() id: string,
   ) {
-    return this.postService.delete(payload);
+    return this.postService.delete(id);
   }
 }
