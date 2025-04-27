@@ -13,18 +13,18 @@ export class PostController {
     return this.postService.list();
   }
 
-  @MessagePattern({ cmd: 'find' })
-  find(
-    @Payload() id: any,
-  ) {
-    return this.postService.find(id);
-  }
-
   @MessagePattern({ cmd: 'create' })
   create(
     @Payload() payload: any,
   ) {
     return this.postService.create(payload);
+  }
+
+  @MessagePattern({ cmd: 'find' })
+  find(
+    @Payload() id: any,
+  ) {
+    return this.postService.find(id);
   }
 
   @MessagePattern({ cmd: 'update' })
